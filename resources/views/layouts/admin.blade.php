@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/">Pagrindinis</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -331,8 +331,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"></h1>
-
                 @yield('content')
             </div>
             <!-- /.col-lg-12 -->
