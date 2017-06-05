@@ -25,7 +25,7 @@
                         @if($user->photo)
                         <img src="{{$user->photo->path}}" alt="user-img" class="img-circle user-img">
                         @else
-                        {{"no photo"}}
+                            <img src="/images/useralias.jpg" alt="user-img" class="img-circle user-img">
                         @endif
                     </td>
                     <td>{{$user->name}}</td>
@@ -39,7 +39,7 @@
                     </td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->updated_at}}</td>
-                    <td><a href="/admin/users/{{$user->id}}/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil-square-o"></i></a>
+                    <td><a href="users/{{$user->id}}/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil-square-o"></i></a>
                         <a href="#" class="btn btn-danger btn-xs" role="button"><i class="fa fa-trash-o"></i></a>
                     </td>
                 </tr>

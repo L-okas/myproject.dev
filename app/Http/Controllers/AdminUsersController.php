@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UsersEditRequest;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
 use Illuminate\Http\Request;
@@ -38,7 +39,6 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        $inputphoto = $request->only('photo_id');
           if($file = $request->file('photo_id')) {
               $name = time() . $file->getClientOriginalName();
               $file->move('images', $name);
@@ -79,7 +79,7 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'id')->all();
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -89,9 +89,35 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersEditRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+
+        if(trim($request->password) == ''){
+            $forminputs = $request->except('password');
+        } else {
+
+            $forminputs = $request->all();
+            $forminputs['password'] = bcrypt($request->password);
+        }
+
+        if($file = $request->file('photo_id')){
+
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+
+            $photo = Photo::create(['path'=>$name]);
+            $forminputs['photo_id'] = $photo->id;
+        }
+//        $user->name = $request->name;
+//        $user->email = $request->email;
+//        $user->role_id = $request->role_id;
+//        $user->is_active = $request->is_active;
+//        $user->photo_id = $photo->id;
+        $user->update($forminputs);
+        return redirect('/admin/users');
+
     }
 
     /**

@@ -3,7 +3,15 @@
 @section('content')
     <h1 class="admin-control-info">Edit User</h1>
 
-    {!! Form::open(['method'=>'PATCH', 'action'=>'AdminUsersController@update', 'files'=>true]) !!}
+    <div class="col-sm-3">
+            @if($user->photo)
+                <img src="{{$user->photo->path}}" alt="user" class="img-responsive img-rounded">
+            @else
+                    <img src="/images/useralias.jpg" alt="no-alias" class="img-responsive img-rounded">
+            @endif
+    </div>
+    <div class="col-sm-9">
+    {!! Form::model/*bind user model*/($user/*inserting a model*/, ['method'=>'PATCH', 'action'=> ['AdminUsersController@update', $user->id], 'files'=>true]) !!}
 
     <div class="form-group row">
         <div class="col-xs-12 create-admin-form">
@@ -36,7 +44,7 @@
     <div class="form-group row">
         <div class="col-xs-12 create-admin-form">
             {!! Form::label('is_active', 'Status') !!}
-            {!! Form::select('is_active', array(1=>'Active', 0=>'Not active'), 0 , ['class'=>'form-control']) !!}
+            {!! Form::select('is_active', array(1=>'Active', 0=>'Not active'), null /*in edit form 0 not set to default*/ , ['class'=>'form-control']) !!}
         </div>
     </div>
     <div class="form-group row">
@@ -58,7 +66,8 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Create User', ['class'=>'btn btn-primary col-xs-12']) !!}
+        {!! Form::submit('Update User', ['class'=>'btn btn-primary col-xs-12']) !!}
     </div>
     {!! Form::close() !!}
+    </div>
 @endsection
