@@ -41,8 +41,8 @@
             </div>
              <div class="form-group row">
                 <div class="col-xs-12 create-admin-form">
-                    {!! Form::label('img', 'Image') !!}
-                    {!! Form::file('img', ['class'=>'form-control']) !!}
+                    {!! Form::label('photo_id', 'Image') !!}
+                    {!! Form::file('photo_id', ['class'=>'form-control']) !!}
                 </div>
              </div>
             <div class="form-group row">
