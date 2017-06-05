@@ -18,10 +18,33 @@
 .create-admin-form {
   margin: 0 auto;
 }
+.table thead th, tbody td {
+  text-align: center;
+}
+
 form {
   width: 50%;
   margin: 0 auto;
 }
 ul li {
   list-style: none;
+}
+.user-img {
+  height: 30px;
+  width: 30px;
+}
+.status-active {
+  background: #398439;
+
+
+}
+.status-not-active {
+  background: #b52b27;
+  min-width: 70px;
+}
+.status-active, .status-not-active {
+  display: inline-block;
+  padding: 3px;
+  color: #ffffff;
+  border-radius: 3px;
 }

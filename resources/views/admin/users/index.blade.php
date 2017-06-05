@@ -6,12 +6,14 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>User photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>User role</th>
             <th>Status</th>
             <th>Created</th>
             <th>Updated</th>
+            <th>Console</th>
         </tr>
         </thead>
         <tbody>
@@ -19,17 +21,27 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
+                    <td>
+                        @if($user->photo)
+                        <img src="{{$user->photo->path}}" alt="user-img" class="img-circle user-img">
+                        @else
+                        {{"no photo"}}
+                        @endif
+                    </td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>@if($user->is_active == 1)
-                        {{"active"}}
+                        <span class="status-active">{{"active"}}</span>
                         @else
-                         {{"not active"}}
+                         <span class="status-not-active">{{"not active"}}</span>
                         @endif
                     </td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->updated_at}}</td>
+                    <td><a href="/admin/users/{{$user->id}}/edit" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="#" class="btn btn-danger btn-xs" role="button"><i class="fa fa-trash-o"></i></a>
+                    </td>
                 </tr>
             @endforeach
         @endif
