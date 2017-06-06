@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Pagrindinis</a>
+            <a class="navbar-brand" href="/">Welcome Administrator: {{Auth::user()->name}}</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -54,7 +54,7 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i><span style="margin-right: 10px"><i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -349,8 +349,6 @@
 
 
 @yield('footer')
-
-
 
 
 
