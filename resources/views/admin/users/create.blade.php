@@ -56,7 +56,6 @@
                     @endif
                 </div>
              </div>
-
         <div class="form-group">
             {!! Form::submit('Create User', ['class'=>'btn btn-primary col-xs-12']) !!}
         </div>

@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-12 create-admin-form">
+            <div class="col-xs-12 create-admin-form submit-buttons-blue">
             {!! Form::submit('Create Post', ['class'=>'btn btn-primary col-xs-12']) !!}
             </div>
         </div>

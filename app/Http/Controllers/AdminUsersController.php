@@ -18,7 +18,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(8);
         return view('admin.users.index', compact('users'));
     }
 
@@ -56,6 +56,7 @@ class AdminUsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->photo_id = $input['photo_id'];
         $user->save();
+        Session::flash('user_created', 'User Created');
         return redirect('/admin/users');
     }
 
@@ -117,6 +118,7 @@ class AdminUsersController extends Controller
 //        $user->is_active = $request->is_active;
 //        $user->photo_id = $photo->id;
         $user->update($forminputs);
+        Session::flash('user_updated', 'User Updated');
         return redirect('/admin/users');
 
     }
@@ -131,7 +133,7 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        unlink(public_path() . $user->photo->path); /*deletes images from images folder*/
+//        unlink(public_path() . $user->photo->path); /*deletes images from images folder*/
 
         $user->delete();
         Session::flash('user_delete', 'User has been deleted');

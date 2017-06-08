@@ -5,6 +5,14 @@
     <div class="alert alert-success" style="margin-top: 10px;">
     <strong>{{session('user_delete')}}</strong>
     </div>
+    @elseif(Session::has('user_created'))
+        <div class="alert alert-success" style="margin-top: 10px;">
+            <strong>{{session('user_created')}}</strong>
+        </div>
+    @elseif(Session::has('user_updated'))
+        <div class="alert alert-success" style="margin-top: 10px;">
+            <strong>{{session('user_updated')}}</strong>
+        </div>
     @endif
     <h1 class="admin-control-info">Users</h1>
     <table class="table">
@@ -59,4 +67,9 @@
         @endif
         </tbody>
     </table>
+    <div class="row" style="margin-top: 200px">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$users->render()}}
+        </div>
+    </div>
 @endsection
